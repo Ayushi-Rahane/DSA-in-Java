@@ -12,7 +12,7 @@ class Node{
 }
 class DLL{
     Node head,ptr;
-//2. Creating a List
+//2. Creating a List (Also for insert at end)
     void create_list(int data){
         Node temp = new Node(data);
         if(head==null){
@@ -40,6 +40,9 @@ class DLL{
             head = temp;
         }
     }
+    // 3. Insert in between
+    
+    //6. Displaying the list
     void display_list(){
         if(head==null){
             System.out.println("List is empty");
