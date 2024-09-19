@@ -123,6 +123,8 @@ class Code_club{
         }
         else {
         	ptr = head;
+			//pos=3
+			//pos-1 = 2
         	int k=1;
         	while(k<pos-1 && ptr.next!=null) {
         		k++;

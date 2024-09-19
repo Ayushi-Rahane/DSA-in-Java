@@ -44,13 +44,15 @@ class ssl{
 	}
 	
 	//4. Insert element in between
-	void insert_in_between(int data) {
+	void insert_in_between(int data, int pos) {
 		node temp = new node(data);
 		if(head==null) {
 			head=temp;
 		}
 		else {
-			
+			ptr = head;
+			int k =1;
+
 		}
 	}
 	
@@ -85,6 +87,8 @@ class ssl{
 		else {
 			ptr = head;
 			int k=1;
+			//pos=3
+                // pos-1 = 2
 			while(k<pos-1 && ptr.next!=null) {
 				k++;
 				ptr = ptr.next;
@@ -157,7 +161,10 @@ public static void main(String[] args) {
 			for(int i=0;i<n2;i++) {
 				System.out.println("Enter element "+(i+1)+": ");
 				int data = sc.nextInt();
-				l.insert_in_between(data);
+				sc.nextLine();
+				System.out.println("Enter the position: ");
+				int pos = sc.nextInt();
+				l.insert_in_between(data, pos);
 			}
 			break;
 		case  3:
