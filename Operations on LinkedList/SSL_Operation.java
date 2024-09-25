@@ -52,6 +52,11 @@ class ssl{
 		else {
 			ptr = head;
 			int k =1;
+			while(k<pos-1 && ptr.next !=null){
+				k++;
+				ptr = ptr.next;
+			}
+			ptr.next = ptr.next.next;
 
 		}
 	}
@@ -87,8 +92,6 @@ class ssl{
 		else {
 			ptr = head;
 			int k=1;
-			//pos=3
-                // pos-1 = 2
 			while(k<pos-1 && ptr.next!=null) {
 				k++;
 				ptr = ptr.next;
@@ -187,6 +190,9 @@ public static void main(String[] args) {
 			System.out.println("Enter the position of element you want to delete: ");
 			int pos = sc.nextInt();
 			l.delete_in_between(pos);
+			break;
+		case 3:
+		    l.delete_at_last();
 			break;
 		}
 		break;
