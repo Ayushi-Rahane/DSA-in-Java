@@ -82,8 +82,64 @@ class DLL{
     System.out.println("Enter Element: ");
     int data = sc.nextInt();
     sc.nextLine();
-    node temp = new node(data);
     create(data);
+   }
+
+   //Delete at first
+   void delete_at_first(){
+    if(head==null){
+        System.out.println("List is empty");
+    }
+    else if (head.next == null) { // Only one node
+        head = null;
+    }
+    else{
+        head = head.next;
+        head.prev = null;
+    }
+   }
+   //Delete in between
+   void delete_in_between(){
+    if(head==null){
+        System.out.println("List is empty");
+    }
+    else{
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter position:");
+        int pos = sc.nextInt();
+        sc.nextLine();
+        int k=1;
+        node ptr = head;
+        while(k<pos-1 && ptr.next!=null){
+            k++;
+            ptr = ptr.next;
+        }
+        if(ptr.next==null || ptr.next.next==null){
+            System.out.println("Position out of bound");
+            return;
+        }
+        ptr.next = ptr.next.next;
+        if(ptr.next!=null){
+            ptr.next.prev = ptr;
+        }
+    }
+   }
+
+   //Delete at end
+   void delete_at_end(){
+    if(head==null){
+        System.out.println("List is empty");
+    }
+    else if(head.next ==null){
+        head=null;
+    }
+    else{
+        node ptr=head;
+        while(ptr.next!=null){
+            ptr = ptr.next;
+        }
+        ptr.prev.next =null;
+    }
    }
     void display(){
         if(head==null){
@@ -128,7 +184,15 @@ public class DLL_Operations {
             case 4:
               l.insert_At_end();
             break;
-            
+            case 5:
+               l.delete_at_first();
+               break;
+            case 6:
+               l.delete_in_between();
+               break;
+            case 7:
+               l.delete_at_end();
+               break;
             case 8:
             System.out.println("Displaying.....");
             l.display();
