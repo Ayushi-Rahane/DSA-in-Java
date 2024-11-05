@@ -1,3 +1,14 @@
+/*
+ * 
+ * Assignment no: 5
+ * Submitted By:
+ * NAME: Rahane Ayushi Madhukar
+ * UCE: UCE2024014
+ * DIV: B
+ * Branch: B4
+ * 
+ * */
+
 import java.util.*;
 class job{
     int deadline, profit;
@@ -14,7 +25,7 @@ class job{
     public static void main(String[] args){
     job[] j1 = {new job('a',2,100), new job('b',1,19), new job('c',2,27), new job('d',1,25), new job('e',3,15)};
     job temp;
-    int max_profit;
+    int max_profit=0;
     for(int i=0;i<j1.length-1;i++) {
     for(int j=0;j<j1.length-i-1;j++) {
     if(j1[j].profit<j1[j+1].profit) {
@@ -40,22 +51,41 @@ class job{
     i='\0';
     }
     
-    for(int i=0;i<deadline.length;i++){
-        if(j1[i].deadline <= deadline.length){
-            if(j1[i].deadline==i && deadline[i]=='\0'){
-                 deadline[i]=j1[i].jobid;
-            }
-            else if(j1[i].deadline<=(i-1) && deadline[i-1]=='\0'){
-                   deadline[i-1]=j1[i].jobid;
-            }
-            else if(j1[i].deadline>=(i+1) && deadline[i+1]=='\0'){
-                   deadline[i+1]=j1[i].jobid;
-            }
-        }
+    for(int i=0;i<j1.length;i++){
+      for(int j=0;j<deadline.length;j++){
+            if(j1[i].deadline==(j+1) && deadline[j]=='\0'){
+                deadline[j]=j1[i].jobid;
+                max_profit+=j1[i].profit;
+                break;
+            }     
+            else if(j1[i].deadline==(j+1) && deadline[j]!='\0'){
+                if(j!=0 && deadline[j-1]=='\0'){
+                    deadline[j-1]=j1[i].jobid;
+                    max_profit+=j1[i].profit;
+                    break;
+                }
+            }     
+            
+      }
+    
     }
 
-    System.out.println(Arrays.toString(deadline));
+
+    System.out.println("Following is maximum profit sequence of jobs:"+Arrays.toString(deadline));
+    System.out.println("Maximum profit is: "+max_profit);
        
     }
   
     }
+
+    /*
+     * Output:
+ JobID | Deadline | Profit
+a    |     2    |     100
+c    |     2    |     27
+d    |     1    |     25
+b    |     1    |     19
+e    |     3    |     15
+Following is maximum profit sequence of jobs:[c, a, e]
+Maximum profit is: 142
+     */
