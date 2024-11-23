@@ -1,3 +1,11 @@
+/*
+ * Assignment no: 6
+ * Submitted By:
+ * NAME: Rahane Ayushi Madhukar
+ * UCE: UCE2024014
+ * DIV: B
+ * Batch: B4
+ */
 import java.util.*;
 
 class node{
@@ -107,77 +115,81 @@ class binary{
             System.out.println("no such a word exist");
         }
      }
-    
-     void delete(String key){
-        node parent = null;
-        node ptr = root;
-        while(ptr!=null && !ptr.word.equals(key)){
-            parent = ptr;
-            if(ptr.word.compareTo(key)>0){
-                ptr = ptr.left;
-            }
-            else{
-                ptr = ptr.right;
-            }
+   
+     void delete(String key) {
+    node parent = null;
+    node ptr = root;
+   
+   
+    while (ptr != null && !ptr.word.equals(key)) {
+        parent = ptr;
+        if (ptr.word.compareTo(key) > 0) {
+            ptr = ptr.left;
+        } else {
+            ptr = ptr.right;
         }
-        if(ptr==null){
-            System.out.println("No word found");
+    }
+   
+   
+    if (ptr == null) {
+        System.out.println("No word found");
+        return;
+    }
+   
+   
+    if (ptr.left == null && ptr.right == null) {
+        if (ptr == root) {  
+            root = null;
+        } else if (parent.left == ptr) {
+            parent.left = null;
+        } else {
+            parent.right = null;
         }
-        else{
-            //deleting leaf node
-            if(ptr.left==null && ptr.right==null){
-                if(ptr==root){
-                    root=null;
-                }
-                else if(parent.left == ptr){
-                     parent.left = null;
-                }
-                else{
-                    parent.right = null;
-                }
-            }
-            // left child is present and right child is absent of parent node
-            else if(ptr.left!=null && ptr.right==null){
-                if(parent.left==ptr){
-                      parent.left=ptr.left;
-                }
-                else if(parent.right==ptr){
-                    parent.right = ptr.left;
-                }
-            }
-            //right child is present and left child is absent
-            else if(ptr.right!=null && ptr.left==null){
-                if(parent.left==ptr){
-                      parent.left=ptr.right;
-                }
-                else if(parent.right==ptr){
-                    parent.right = ptr.right;
-                }
-            }
-            else {
-                node successorParent = ptr;
-                node successor = ptr.left;
-    
-                // Find the rightmost child in the left subtree of ptr
-                while (successor.right != null) {
-                    successorParent = successor;
-                    successor = successor.right;
-                }
-    
-                // Copy data from successor to the node to be deleted
-                ptr.word = successor.word;
-                ptr.meaning = successor.meaning;
-    
-                // Attach the left subtree of successor to its parent
-                if (successorParent.left == successor) {
-                    successorParent.left = successor.left;
-                } else {
-                    successorParent.right = successor.left;
-                }
-            }
+    }
+   
+    else if (ptr.left != null && ptr.right == null) {
+        if (ptr == root) {  
+            root = ptr.left;
+        } else if (parent.left == ptr) {
+            parent.left = ptr.left;
+        } else {
+            parent.right = ptr.left;
+        }
+    }
+   
+    else if (ptr.right != null && ptr.left == null) {
+        if (ptr == root) {  
+            root = ptr.right;
+        } else if (parent.left == ptr) {
+            parent.left = ptr.right;
+        } else {
+            parent.right = ptr.right;
+        }
+    }
+   
+    else {
+        node successorParent = ptr;
+        node successor = ptr.right;  
+       
 
+        while (successor.left != null) {
+            successorParent = successor;
+            successor = successor.left;
         }
-     }
+       
+     
+        ptr.word = successor.word;
+        ptr.meaning = successor.meaning;
+       
+   
+        if (successorParent.left == successor) {
+            successorParent.left = successor.right;
+        } else {
+            successorParent.right = successor.right;  
+        }
+    }
+}
+ 
     void display(node n){
         if(n!=null){
             display(n.left);
@@ -190,7 +202,7 @@ class binary{
         return root;
     }
 }
-public class assignment6{
+public class assingment6{
     public static void main(String[] args){
         binary b=new binary();
         Scanner s=new Scanner(System.in);
@@ -230,3 +242,129 @@ public class assignment6{
             s.close();
     }
 }
+
+/*
+
+        **MENU**
+0)Quit
+1)Create
+2)Display
+3)Search
+4)Update
+5)Delete
+Enter choice : 1
+Enter word: 
+ant
+Enter Meaning: 
+insect
+
+        **MENU**
+0)Quit
+1)Create
+2)Display
+3)Search
+4)Update
+5)Delete
+Enter choice : 1
+Enter word: 
+water
+Enter Meaning: 
+liquid
+Node has been inserted
+
+        **MENU**
+0)Quit
+1)Create
+2)Display
+3)Search
+4)Update
+5)Delete
+Enter choice : 1
+Enter word: 
+animal
+Enter Meaning: 
+living thing
+Node has been inserted.
+
+        **MENU**
+0)Quit
+1)Create
+2)Display
+3)Search
+4)Update
+5)Delete
+Enter choice : 2
+Displaying...
+animal: living thing
+ant: insect
+water: liquid
+
+        **MENU**
+0)Quit
+1)Create
+2)Display
+3)Search
+4)Update
+5)Delete
+Enter choice : 3
+Enter Word: 
+water
+water: liquid
+
+        **MENU**
+0)Quit
+1)Create
+2)Display
+3)Search
+4)Update
+5)Delete
+Enter choice : 4
+Enter word to update: 
+animal
+Enter new meaning of animal
+human
+Word has been updated
+
+        **MENU**
+0)Quit
+1)Create
+2)Display
+3)Search
+4)Update
+5)Delete
+Enter choice : 5
+Enter word : animal
+
+        **MENU**
+0)Quit
+1)Create
+2)Display
+3)Search
+4)Update
+5)Delete
+Enter choice : 5
+Enter word : ant
+
+        **MENU**
+0)Quit
+1)Create
+2)Display
+3)Search
+4)Update
+5)Delete
+Enter choice : 2
+Displaying...
+animal: human
+ant: insect
+water: liquid
+
+        **MENU**
+0)Quit
+1)Create
+2)Display
+3)Search
+4)Update
+5)Delete
+Enter choice : 0
+Terminated
+ */

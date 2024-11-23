@@ -1,3 +1,11 @@
+/*
+ * Assignment no: 7
+ * Submitted By:
+ * NAME: Rahane Ayushi Madhukar
+ * UCE: UCE2024014
+ * DIV: B
+ * Batch: B4
+ */
 import java.util.*;
 
 class Contact_details{
@@ -138,3 +146,98 @@ public class assignment7 {
    
     }
 }
+
+/*
+Enter size of Contact size: 
+3
+Enter 1. to Insert 
+ 2. To Search
+ 3. To Delete
+ 4. To Display:
+1
+Enter Person's Name:
+aa
+Enter Contact Number: 
+123321
+Enter 0 to continue
+0
+Enter 1. to Insert 
+ 2. To Search
+ 3. To Delete
+ 4. To Display:
+1
+Enter Person's Name:
+bb
+Enter Contact Number: 
+234432
+Enter 0 to continue
+0
+Enter 1. to Insert 
+ 2. To Search
+ 3. To Delete
+ 4. To Display:
+1
+Enter Person's Name:
+cc
+Enter Contact Number: 
+345543
+Enter 0 to continue
+0
+Enter 1. to Insert 
+ 2. To Search
+ 3. To Delete
+ 4. To Display:
+4
+Index:0
+
+Contact Name: cc
+ Ph. no. 345543
+Contact Name: bb
+ Ph. no. 234432
+Contact Name: aa
+ Ph. no. 123321
+Index:1
+
+Index:2
+
+Enter 0 to continue
+0
+Enter 1. to Insert 
+ 2. To Search      
+ 3. To Delete      
+ 4. To Display:    
+3
+Enter the Contact no: 
+123321
+Deleted successfully..
+Enter 0 to continue   
+0
+Enter 1. to Insert 
+ 2. To Search      
+ 3. To Delete      
+ 4. To Display:    
+4
+Index:0
+
+Contact Name: cc
+ Ph. no. 345543
+Contact Name: bb
+ Ph. no. 234432
+Index:1
+
+Index:2
+
+Enter 0 to continue
+0
+Enter 1. to Insert 
+ 2. To Search
+ 3. To Delete
+ 4. To Display:
+2
+Enter the Contact no: 
+234432
+Contact Name: bb
+ Ph. no. 234432
+Enter 0 to continue
+1
+ */
