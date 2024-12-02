@@ -114,8 +114,130 @@ class code_club{
         }
     }
 
-    void insert_In_between(pos){
-        
+    void insert_In_between(int pos){
+        System.out.println("Adding Member");
+        System.out.println("Enter member id: ");
+        int mid = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Enter Name: ");
+        String name = sc.nextLine();
+        System.out.println("Enter position: ");
+        String position = sc.nextLine();
+        System.out.println("Enter address: ");
+        String add = sc.nextLine();
+        node temp = new node(mid,name,add,position);
+        if(head==null){
+            head = temp;
+        }
+        else{
+            node ptr = head;
+            int k=1;
+            while(k<pos-1 && ptr.next!=null){
+                k++;
+                ptr = ptr.next;
+            }
+            temp.next = ptr.next;
+            ptr.next = temp;
+        }
+    }
+
+    void delete(){
+        System.out.println("Enter 1. to delete at start\n 2. to delete at in between\n 3. to delete at last: ");
+			int c = sc.nextInt();
+        switch(c) {
+            case 1:
+                delete_at_start();
+                break;
+            case 2:
+                System.out.println("Enter the position of element you want to delete: ");
+                int pos = sc.nextInt();
+                delete_in_between(pos);
+                break;
+            case 3:
+                delete_at_end();
+                break;
+                
+            }
+    }
+
+    void delete_at_start(){
+        if(head==null){
+            System.out.println("Deleted Successfully");
+        }
+        else if(head.next==null){
+            head=null;
+            System.out.println("Deleted successfully...");
+        }
+        else{
+            head=head.next;
+            System.out.println("Deleted successfully...");
+        }
+    }
+    void delete_in_between(int pos){
+        if(head==null){
+            System.out.println("Deleted Successfully");
+        }
+        else if(head.next==null){
+            head=null;
+            System.out.println("Deleted Successfully");
+        }
+        else{
+            node ptr=head;
+            int k=1;
+            while(k<pos-1 && ptr.next!=null){
+                ptr = ptr.next;
+                k++;
+            }
+            if(ptr.next==null || ptr.next.next==null){
+                System.out.println("Position out of bound..");
+                return ;
+            }
+            ptr.next = ptr.next.next;
+            System.out.println("Deleted successfully..");
+        }
+    }
+
+    void delete_at_end(){
+        if(head==null){
+            System.out.println("Deleted successfully.");
+        }
+        else if(head.next==null){
+            head=null;
+            System.out.println("Deleted successfully.");
+        }
+
+        else{
+            node ptr = head;
+            node prev=head;
+            while(ptr.next!=null){
+                prev=ptr;
+                ptr = ptr.next;
+                
+            }
+            prev.next=null;
+            System.out.println("Deleted successfully...");
+        }
+    }
+
+    void update(){
+        System.out.println("Enter member id: ");
+        int mid = sc.nextInt();
+        sc.nextLine();
+        int flag=1;
+        node ptr = head;
+        while(ptr!=null){
+            if(ptr.member_id==mid){
+                System.out.println("Enter new positiion");
+                ptr.position = sc.nextLine();
+                System.out.println("Updated successfully.");
+                flag=0;
+                break;
+            }
+            ptr=ptr.next;
+        }
+        if(flag==1){
+            System.out.println("Memeber not found");
+        }
     }
 }
 public class assignment2 {
@@ -142,6 +264,14 @@ public class assignment2 {
 
                 case 3:
                 cc.insert();
+                break;
+
+                case 4:
+                cc.delete();
+                break;
+
+                case 5:
+                cc.update();
                 break;
             }
             System.out.println("Enter 0 to continue: ");
