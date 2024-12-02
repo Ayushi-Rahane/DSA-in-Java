@@ -70,21 +70,53 @@ Input:
           System.out.println("Enter isbn: ");
           int isbn = sc.nextInt();
           int start = 0, end =n-1,mid;
+          int flag = 0;
           while(start<=end){
             mid = (start+end)/2;
             if(b[mid].isbn>isbn){
-                end = mid+1;
+                end = mid-1;
             }
             else if(b[mid].isbn<isbn){
-                start=mid-1;
+                start=mid+1;
             }
             else{
                 System.out.println("Book found: ");
                 System.out.println(b[mid].bname+" "+b[mid].aname+" "+b[mid].isbn+" "+b[mid].pname);
-                return;
+                flag = 1;
+                break;
             }
           }
-          System.out.println("No Book found");
+          if(flag==0){
+            System.out.println("No Book found");
+          }
+       }
+
+       void search_author(){
+        System.out.println("Enter Author name");
+        String aname = sc.nextLine();
+        int flag=0;
+        for(int i=0;i<n;i++){
+            if(b[i].aname.equals(aname)){
+                System.out.println("Books: "+b[i].bname);
+                flag=1;
+            }
+        }
+        if(flag!=1){
+            System.out.println("Not found");
+        }
+       }
+       void sort(){
+        book temp;
+        for(int i=0;i<n-1;i++){
+            for(int j=0;j<n-1-i;j++){
+                if(b[j].isbn>b[j+1].isbn){
+                        temp = b[j];
+                        b[j]=b[j+1];
+                        b[j+1]=temp;
+                }
+            }
+        }
+        System.out.println("Sorted successfully..");
        }
  }
 public class assignment1 {
@@ -105,6 +137,13 @@ public class assignment1 {
                 break;
             case 3:
                 l.search_isbn();
+                break;
+            case 4:
+                l.search_author();
+                break;
+            case 5:
+                l.sort();
+                break;
         }
         System.out.println("Enter 0 to continue: ");
         c = sc.nextInt();
