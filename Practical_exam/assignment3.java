@@ -47,6 +47,63 @@ class Stack{
         }
         return '\0';
     }
+
+    void evaluate(){
+        System.out.println("Enter Expression: ");
+        String[] str = sc.nextLine().split(",");
+        int[] stck = new int[str.length];
+        int top=-1;
+        for(int i=0;i<str.length;i++){
+            char c = str[i].charAt(0);
+            if(Character.isDigit(c)){
+                stck[++top]=c-'0';
+            }
+            else if(c=='+' ||c=='-' ||c=='*' ||c=='/' || c=='^'){
+                if(top<1){
+                    System.out.println("Insufficient operators");
+                    
+                }
+                int op2 = stck[top--];
+                int op1 = stck[top--];
+                if(c=='+'){
+                    stck[++top]=op1+op2;
+                }
+                else if(c=='-'){
+                    stck[++top]=op1-op2;
+                }
+                else if(c=='*'){
+                    stck[++top]=op1*op2;
+                }
+                else if(c=='/'){
+                    if(op2==0){
+                        System.out.println("Error: Divide by error");
+                    }
+                    else{
+                        stck[++top]=op1/op2;
+                    }
+                }
+                else if(c=='^'){
+                    stck[++top]=(int) Math.pow(op1,op2);
+                }
+
+            }
+            else{
+				System.out.println("Unidentified Character: "+c);
+			}
+
+        }
+        System.out.println("Answer: ");
+        if(top<=-1){
+            System.out.println("Stack is empty");
+        }
+
+        else{
+            for(int i=0;i<=top;i++){
+                System.out.println(stck[i]);
+            }
+        }
+    }
+
     void reverseString(){
         System.out.println("Enter String: ");
         String str = sc.nextLine();
@@ -73,7 +130,7 @@ public class assignment3 {
         sc.nextLine();
         switch(c) {
         case 1:
-         // st.evaluate();
+            st.evaluate();
             break;
         case 2:
             st.reverseString();
