@@ -1,7 +1,7 @@
 import java.util.*;
 
 //USING ARRAY: linear queue
-
+/*
 class Queue{
    int rear,front,size;
    int[] queue;
@@ -85,3 +85,100 @@ public class dequeue_enqueue{
     }while(c==1);
    }
 }
+   */
+
+
+
+//Using LinkedList:Linear queue
+/*
+class node{
+    node next;
+    int data;
+    node(int data){
+        this.data = data;
+        next=null;
+    }
+}
+class Queue{
+    node front, rear;
+    Queue(){
+        front=rear=null;
+    }
+    boolean isempty(){
+        if(front==null){
+            return true;
+        }
+        return false;
+    }
+
+    void enqueue()
+    {
+        Scanner sc = new Scanner(System.in)        ;
+        System.out.println("Enter the data: ");
+        int data = sc.nextInt();
+        node temp = new node(data);
+        if(rear==null){
+            rear=front=temp;
+        }
+        else{
+            rear.next = temp;
+            rear=temp;
+            System.out.println("Element added successfully..");
+        }
+
+    }
+
+    void dequeue(){
+        if(isempty()){
+            System.out.println("Queue is empty");
+        }
+        else{
+            front=front.next;
+            if(front==null){
+                rear=null;
+            }
+            System.out.println("Data deleted successfully..");
+        }
+    }
+    void display(){
+        if(isempty()){
+            System.out.println("Queue is empty");
+        }
+        else{
+            node ptr = front;
+            while(ptr!=null){
+                System.out.println(ptr.data);
+                ptr = ptr.next;
+            }
+        }
+    }
+}
+public class dequeue_enqueue{
+    public static void main(String[] args){
+     Queue q = new Queue();
+ 
+     Scanner sc = new Scanner(System.in);
+     int c;
+     do{
+         System.out.println("Enter 1. to dequeue \n 2. to enqueue \n 3. to display: ");
+         c = sc.nextInt();
+         switch(c){
+            case 1:
+              q.dequeue();
+              break;
+             case 2:
+               q.enqueue();
+               break;
+             case 3:
+               q.display();
+                break;
+               
+         }
+         System.out.println("Enter 1 to continue: ");
+         c = sc.nextInt();
+     }while(c==1);
+    }
+ }
+ */
+
+ 
