@@ -44,7 +44,7 @@ static ArrayList<Integer> bfsGraph(int v, ArrayList<ArrayList<Integer>> adj){
         ArrayList<Integer> bfs = bfsGraph(v,adj);
         System.out.println("BFD Traversal: ");
         for(int i: bfs){
-            System.out.println(i);
+            sysout
         }
 
 

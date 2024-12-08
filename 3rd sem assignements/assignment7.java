@@ -73,7 +73,7 @@ sc.nextLine();
 int index = hash_address(cno);
 int found=0;
    Contact_details ptr = contact_list[index];
-   Contact_details prev = contact_list[index];
+   Contact_details prev = null;
    while(ptr != null ) {
     if(ptr.c_no == cno) {
     if(prev==null){

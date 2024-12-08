@@ -37,15 +37,7 @@ class graph{
         }
     }
 
-    void display(){
-        for(int i=0;i<adj.size();i++){
-            System.out.println("Vertex: "+i);
-            for(int j : adj.get(i)){
-                System.out.print("->"+j);
-            }
-            System.out.println();
-        }
-    }
+    
 
     boolean isSafe(int node,ArrayList<ArrayList<Integer>> G, int[] color, int i ){
         for(int adjvertex : G.get(node)){
